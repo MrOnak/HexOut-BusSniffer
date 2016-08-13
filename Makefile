@@ -29,6 +29,10 @@ clean:
 # reads all three fuses
 readfuses:
 	$(DUDE) $(DUDEFLAGS) -U lfuse:r:-:h -U hfuse:r:-:h -U efuse:r:-:h
+  
+# sets all fuses correctly for the HexOut BusSniffer circuit
+writefuses:
+  $(DUDE) $(DUDEFLAGS) -U lfuse:w:0xff:m -U hfuse:w:0xde:m -U efuse:w:0x05:m
 
 # From .elf file to .hex
 %.hex: %.elf
